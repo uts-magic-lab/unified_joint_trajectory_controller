@@ -1,0 +1,18 @@
+<launch>
+    <!-- Upload urdf -->
+    <include file="$(find pr2_description)/robots/upload_pr2.launch"/>
+    <node pkg="unified_joint_trajectory_controller" type="fake_joint_traj_cnt.py"
+        args="/head_traj_controller has_state has_command joint_names head_pan_joint head_tilt_joint" output="screen" name="fake_head"/>
+
+    <node pkg="unified_joint_trajectory_controller" type="fake_joint_traj_cnt.py"
+        args="/r_arm_controller has_state has_command" output="screen" name="fake_r_arm"/>
+
+    <node pkg="unified_joint_trajectory_controller" type="fake_joint_traj_cnt.py"
+        args="/l_arm_controller has_state has_command" output="screen" name="fake_l_arm"/>
+
+    <node pkg="unified_joint_trajectory_controller" type="fake_joint_traj_cnt.py"
+        args="/torso_lift_controller has_state has_command" output="screen" name="fake_torso"/>
+
+    <!-- missing grippers -->
+
+</launch>
