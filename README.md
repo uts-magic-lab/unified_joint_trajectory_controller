@@ -10,7 +10,7 @@ tools to move the robot (GUIs, web based GUI, controllers, apps...).
 # Aims of the package
 
 * Create just a `yaml` config file to describe the controllers of the robot.
-```xml
+```yaml
 unified_joint_trajectory_controller:
   - controller_type: joint_trajectory_controller
     action_server: '/head_traj_controller'
