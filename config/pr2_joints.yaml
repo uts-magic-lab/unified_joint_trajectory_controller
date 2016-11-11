@@ -1,37 +1,38 @@
 unified_joint_trajectory_controller:
-  - controller_type: joint_trajectory_controller
-    action_server: '/head_traj_controller'
-    # Specifiying the joints is not necessary but
-    # if doing so, it sets the order to use on them
-    # useful for later on developing GUI's or so
-    # The joint names are taken from the state topic otherwise
-    joint_names: ['head_pan_joint', 'head_tilt_joint']
+  controllers:
+    - controller_type: joint_trajectory_controller
+      action_server: '/head_traj_controller'
+      # Specifiying the joints is not necessary but
+      # if doing so, it sets the order to use on them
+      # useful for later on developing GUI's or so
+      # The joint names are taken from the state topic otherwise
+      joint_names: ['head_pan_joint', 'head_tilt_joint']
 
-  - controller_type: joint_trajectory_controller
-    action_server: '/r_arm_controller'
-    joint_names: ['r_shoulder_pan_joint', 'r_upper_arm_roll_joint',
-                  'r_shoulder_lift_joint', 'r_forearm_roll_joint',
-                  'r_elbow_flex_joint', 'r_wrist_flex_joint',
-                  'r_wrist_roll_joint',]
+    - controller_type: joint_trajectory_controller
+      action_server: '/r_arm_controller'
+      joint_names: ['r_shoulder_pan_joint', 'r_upper_arm_roll_joint',
+                    'r_shoulder_lift_joint', 'r_forearm_roll_joint',
+                    'r_elbow_flex_joint', 'r_wrist_flex_joint',
+                    'r_wrist_roll_joint',]
 
-  - controller_type: joint_trajectory_controller
-    action_server: '/l_arm_controller'
-    joint_names: ['l_shoulder_pan_joint', 'l_upper_arm_roll_joint',
-                  'l_shoulder_lift_joint', 'l_forearm_roll_joint',
-                  'l_elbow_flex_joint', 'l_wrist_flex_joint',
-                  'l_wrist_roll_joint',]
+    - controller_type: joint_trajectory_controller
+      action_server: '/l_arm_controller'
+      joint_names: ['l_shoulder_pan_joint', 'l_upper_arm_roll_joint',
+                    'l_shoulder_lift_joint', 'l_forearm_roll_joint',
+                    'l_elbow_flex_joint', 'l_wrist_flex_joint',
+                    'l_wrist_roll_joint',]
 
-  - controller_type: joint_trajectory_controller
-    action_server: '/torso_controller'
-    joint_names: ['torso_lift_joint']
+    - controller_type: joint_trajectory_controller
+      action_server: '/torso_controller'
+      joint_names: ['torso_lift_joint']
 
-  - controller_type: pr2_gripper_action
-    action_server: '/r_gripper_controller'
-    joint_names: ['r_gripper_joint']  # Unnecessary but nice to have documented
+    - controller_type: pr2_gripper_action
+      action_server: '/r_gripper_controller'
+      joint_names: ['r_gripper_joint']  # Unnecessary but nice to have documented
 
-  - controller_type: pr2_gripper_action
-    action_server: '/l_gripper_controller'
-    joint_names: ['l_gripper_joint']
+    - controller_type: pr2_gripper_action
+      action_server: '/l_gripper_controller'
+      joint_names: ['l_gripper_joint']
 
   # Nice param to have
   uncontrollable_joints: ['fl_caster_rotation_joint', 'fl_caster_l_wheel_joint', 

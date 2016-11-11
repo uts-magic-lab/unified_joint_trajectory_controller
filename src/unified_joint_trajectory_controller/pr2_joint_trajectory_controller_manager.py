@@ -7,7 +7,7 @@ from pr2_controllers_msgs.msg import JointTrajectoryFeedback
 from pr2_controllers_msgs.msg import JointTrajectoryResult
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from actionlib import SimpleActionClient
-
+# Get state also?
 
 class PR2JointTrajectoryControllerManager(object):
     def __init__(self, action_server, joint_names=[]):
