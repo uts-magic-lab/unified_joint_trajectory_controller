@@ -3,6 +3,7 @@
 import rospy
 # Import controller manager classes
 from unified_joint_trajectory_controller.pr2_joint_trajectory_controller_manager import PR2JointTrajectoryControllerManager
+# ...
 
 
 class UnifiedInterface(object):
@@ -63,6 +64,31 @@ class UnifiedInterface(object):
 
     def get_joint_names_from_state(self, server_name):
         rospy.wait_for_message(server_name + '/state', )
+
+    def send_goal(self, goal):
+        # send goals to all controllers
+        for controller in self.controllers:
+            controller.send_goal(goal)
+
+        # publish feedback until they are done
+        done_goals = [False] * len(self.controllers)
+        while not rospy.is_shutdown() and not all(done_goals):
+            # construct feedback message
+            for cidx, controller in enumerate(self.controllers):
+                if controller.is_goal_done():
+                    done_goals[cidx] = True
+                # add to feedback message this controller stuff
+                fed = controller.get_feedback()
+
+
+        # compose global result and publish
+        for controller in self.controllers:
+            res = controller.get_result()
+
+    def cancel_all_goals(self):
+        for c in self.controllers:
+            c.cancel_all_goals()
+
 
 if __name__ == '__main__':
     rospy.init_node('unified_interface')
