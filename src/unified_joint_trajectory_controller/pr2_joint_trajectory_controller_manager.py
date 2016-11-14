@@ -139,9 +139,17 @@ class PR2JointTrajectoryControllerManager(object):
                            done_cb=self.done_cb,
                            feedback_cb=self.feedback_cb)
 
+    def get_managed_joints(self):
+        """
+        Convenience method, return list of managed joints.
+
+        :returns list: list of strings of managed joints.
+        """
+        return self.managed_joints
+
     def is_goal_done(self):
         """
-        Convenience function, return true if the last goal is done.
+        Convenience method, return true if the last goal is done.
 
         :returns bool: True if goal done, False otherwise.
         """
@@ -149,7 +157,7 @@ class PR2JointTrajectoryControllerManager(object):
 
     def get_result(self):
         """
-        Convenience function, returns result.
+        Convenience method, returns result.
 
         :returns JointTrajectoryResult: result.
         """
@@ -165,7 +173,7 @@ class PR2JointTrajectoryControllerManager(object):
 
     def get_feedback(self):
         """
-        Convenience function, get feedback.
+        Convenience method, get feedback.
 
         :returns JointTrajectoryFeedback: feedback.
         """
