@@ -1,0 +1,6 @@
+<launch>
+
+    <rosparam file="$(find unified_joint_trajectory_controller)/config/pr2_joints.yaml" command="load" />
+    <node pkg="unified_joint_trajectory_controller" type="unified_interface.py" output="screen" name="unified_interface"/>
+
+</launch>
